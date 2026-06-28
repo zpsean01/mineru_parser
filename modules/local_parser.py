@@ -171,7 +171,7 @@ class LocalParser:
                 logger.info("等待分片 %d/%d (batch: %s)…", i + 1, len(ranges), bid)
                 extract_results = self._poll_batch(bid, poll_interval, poll_timeout)
                 label = f"{file_path.stem}_{pr}"
-                chunk_result = self._save_result(extract_results, label, bid, auto_extract)
+                chunk_result = self._save_result(extract_results, label, bid, auto_extract, page_range=pr)
                 chunk_result["chunk_index"] = i
                 chunk_result["page_range"] = pr
                 chunks.append(chunk_result)
